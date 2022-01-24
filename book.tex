@@ -1,0 +1,161 @@
+\documentclass[cn,11pt,chinese]{elegantbook}
+
+\usepackage{diagbox}
+\usepackage{minted}
+\usepackage{minted,tabularx,tikz}
+\usepackage{graphicx}
+\usetikzlibrary{
+  shapes,
+  shapes.geometric,
+  decorations.text,
+  shapes.geometric,
+  calc,
+  decorations.pathreplacing,
+  automata,
+  positioning,
+  arrows
+}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+
+\setcounter{tocdepth}{2}
+
+\title{尚硅谷Flink教程}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[remember picture,overlay]
+%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%
+\fill[Dandelion] (current page.south west) rectangle (current page.north east);
+
+
+
+
+%%%%%%%%%%%%%%%%%%%% Background Polygon %%%%%%%%%%%%%%%%%%%%
+
+\foreach \i in {2.5,...,22}
+{
+    \node[rounded corners,Dandelion!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.west)+(2.5,-5)$) {} ;
+}
+
+\foreach \i in {0.5,...,22}
+{
+\node[rounded corners,Dandelion!60,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north west)+(2.5,0)$) {} ;
+}
+
+\foreach \i in {0.5,...,22}
+{
+\node[rounded corners,Dandelion!90,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.north east)+(0,-9.5)$) {} ;
+}
+
+
+\foreach \i in {21,...,6}
+{
+\node[Dandelion!85,rounded corners,draw,regular polygon,regular polygon sides=6, minimum size=\i cm,ultra thick] at ($(current page.south east)+(-0.2,-0.45)$) {} ;
+}
+
+
+%%%%%%%%%%%%%%%%%%%% Title of the Report %%%%%%%%%%%%%%%%%%%% 
+\node[left,black,minimum width=0.625*\paperwidth,minimum height=3cm, rounded corners] at ($(current page.north east)+(0,-9.5)$)
+{
+{\fontsize{25}{30} \selectfont \bfseries 算法导论习题解答}
+};
+
+%%%%%%%%%%%%%%%%%%%% Author Name %%%%%%%%%%%%%%%%%%%% 
+\node[left,black,minimum width=0.625*\paperwidth,minimum height=2cm, rounded corners] at ($(current page.north east)+(0,-13)$)
+{
+{\Large \textsc{左元}}
+};
+
+%%%%%%%%%%%%%%%%%%%% Year %%%%%%%%%%%%%%%%%%%% 
+\node[rounded corners,fill=Dandelion!70,text =black,regular polygon,regular polygon sides=6, minimum size=2.5 cm,inner sep=0,ultra thick] at ($(current page.west)+(2.5,-5)$) {\LARGE \bfseries 2022};
+
+\end{tikzpicture}
+
+\frontmatter
+
+\tableofcontents
+%\listofchanges
+
+\mainmatter
+
+\chapter{算法在计算中的作用}
+
+\section{算法}
+
+\section{作为一种技术的算法}
+
+\section{思考题}
+
+\chapter{算法基础}
+
+\section{插入排序}
+
+\section{分析算法}
+
+\section{设计算法}
+
+\section{思考题}
+
+\chapter{数论算法}
+
+\section{基础数论概念}
+
+\subsection{练习31.1-1}
+
+\begin{tcolorbox}[colback = red!25!white, colframe = red!75!black]
+  证明：若$a > b > 0$，且$c = a + b$，则$c \mod a = b$。
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback = green!25!white, colframe = green!75!black]
+  $$
+  \begin{aligned}
+  c \mod a & = (a + b) \mod a \\
+           & = (a \mod a) + (b \mod a) \\
+           & = 0 + b \\
+           & = b.
+  \end{aligned}
+  $$
+\end{tcolorbox}
+
+\subsection{练习31.1-2}
+
+\begin{tcolorbox}[colback = red!25!white, colframe = red!75!black]
+  证明有无穷多个素数。（提示：证明素数$p_1，p_2，\cdots，p_k$都不能整除$(p_1 p_2 \cdots p_k) + 1$。）
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback = green!25!white, colframe = green!75!black]
+  $$
+  \begin{aligned}
+      ((p_1 p_2 \cdots p_k) + 1) \mod p_i
+  & = (p_1 p_2 \cdots p_k) \mod p_i + (1 \mod p_i) \\
+  & = 0 + 1 \\
+  & = 1.
+  \end{aligned}
+  $$
+
+  如果 $p_1 p_2 \cdots p_k$ 已经是所有的素数的话，那么 $(p_1 p_2 \cdots p_k) + 1$ 又是一个新的素数。
+\end{tcolorbox}
+
+\subsection{练习31.1-3}
+
+\begin{tcolorbox}[colback = red!25!white, colframe = red!75!black]
+  证明：如果 $a \mid b$ 且 $b \mid c$，则$a \mid c$。
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback = green!25!white, colframe = green!75!black]
+  \begin{itemize}
+    \item 如果$a \mid b$，那么$b = a \cdot k_1$。
+    \item 如果$b \mid c$，那么$c = b \cdot k_2 = a \cdot (k_1 \cdot k_2) = a \cdot k_3$，那么$a \mid c$。
+  \end{itemize}
+\end{tcolorbox}
+
+
+\end{document}
